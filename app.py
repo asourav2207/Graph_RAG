@@ -10,6 +10,14 @@ from datetime import datetime
 
 st.set_page_config(layout="wide", page_title="GraphRAG - Ollama", page_icon="🕸️")
 
+# Load .env for local development
+if os.path.exists(".env"):
+    with open(".env", "r") as f:
+        for line in f:
+            if "=" in line:
+                key, value = line.strip().split("=", 1)
+                os.environ[key] = value
+
 # ============== Initialize Session State ==============
 if 'logs' not in st.session_state:
     st.session_state.logs = ""
@@ -50,10 +58,16 @@ with st.sidebar:
     
     # LLM Settings
     with st.expander("🤖 LLM Settings", expanded=True):
-        model_name = st.text_input("Model Name", value="gpt-oss:20b-cloud", help="e.g., llama3, gpt-4o")
+        model_name = st.text_input("Model Name", value="gpt-oss:120b-cloud", help="e.g., llama3, gpt-4o")
         api_base = st.text_input("API Base URL", value="https://ollama.com/v1", help="Ollama Cloud: https://ollama.com/v1")
-        # Pre-filling user key for convenience
-        api_key = st.text_input("API Key", value="b97e19492b2c442d98addaaeb4daef90...", type="password", help="Ollama Public Key")
+        
+        # Check for Env/Secrets Key
+        env_key = os.environ.get("OLLAMA_API_KEY")
+        if env_key:
+            st.success("🔑 API Key loaded from Environment")
+            api_key = env_key
+        else:
+            api_key = st.text_input("API Key", value="ollama", type="password", help="Enter your Ollama API Key")
     
     st.divider()
     

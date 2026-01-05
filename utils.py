@@ -43,8 +43,13 @@ def check_ollama_status(url="http://localhost:11434"):
     except requests.exceptions.RequestException:
         return False
 
-def update_settings(model_name="gpt-oss:20b-cloud", api_base="http://localhost:11434/v1", api_key="ollama"):
+def update_settings(model_name="gpt-oss:120b-cloud", api_base="https://ollama.com/v1", api_key=None):
     """Updates settings.yaml to use Ollama with optimized settings for local LLMs."""
+    
+    # Priority: Argument > Environment Variable > Default
+    if not api_key:
+        api_key = os.environ.get("OLLAMA_API_KEY", "ollama")
+        
     settings_path = os.path.join(RAG_DIR, "settings.yaml")
     
     if not os.path.exists(settings_path):
@@ -71,16 +76,12 @@ def update_settings(model_name="gpt-oss:20b-cloud", api_base="http://localhost:1
             embed = params['models']['default_embedding_model']
             embed['model_provider'] = 'openai'
             embed['auth_type'] = 'api_key'
+            # Important: Embeddings might need a different model/provider on Cloud?
+            # Assuming nomic-embed-text works on ollama.com too.
             embed['api_key'] = api_key
             embed['api_base'] = api_base
-            # If using a cloud provider generally we still use a local embedding or we can allow configuring it?
-            # For now let's assume the user wants to point both to the same place, OR we keep embeddings local?
-            # Requirement was "use API key created for ollama", likely pointing to a hosted Ollama.
-            # Hosted Ollama usually supports embeddings too.
-            # Use 'nomic-embed-text' if talking to Ollama, or whatever the user sets?
-            # Ideally we'd let them set this too, but for now let's stick to the plan: pass api_base/key to both.
-            embed['model'] = 'nomic-embed-text'  # Best embedding model for Ollama
-            embed['request_timeout'] = 600.0  # 10 minutes for embeddings
+            embed['model'] = 'nomic-embed-text'
+            embed['request_timeout'] = 600.0
             
         # PERFORMANCE OPTIMIZATIONS
         # Disable Gleanings for Speed
