@@ -72,14 +72,14 @@ def update_settings(model_name="gpt-oss:120b-cloud", api_base="https://ollama.co
             chat['request_timeout'] = 3600.0
             
         # ===== EMBEDDING MODEL CONFIG =====
-        # Using local sentence-transformers server (all-MiniLM-L6-v2)
-        # Start server with: python embedding_server.py
+        # Using local sentence-transformers server (all-mpnet-base-v2, 768-dim)
+        # Server is auto-started by app.py
         if 'models' in params and 'default_embedding_model' in params['models']:
             embed = params['models']['default_embedding_model']
             embed['model_provider'] = 'openai'  # Server exposes OpenAI-compatible API
             embed['auth_type'] = 'api_key'
-            embed['api_key'] = 'none'  # Local server, no key needed
-            embed['api_base'] = 'http://localhost:8100/v1'  # Local embedding server
+            embed['api_key'] = 'none'
+            embed['api_base'] = 'http://localhost:8100/v1'
             embed['model'] = 'all-mpnet-base-v2'
             embed['request_timeout'] = 600.0
             

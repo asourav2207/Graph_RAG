@@ -7,6 +7,8 @@ import utils
 import database as db
 import os
 from datetime import datetime
+import threading
+import time
 
 st.set_page_config(layout="wide", page_title="GraphRAG - Ollama", page_icon="🕸️")
 
@@ -17,6 +19,33 @@ if os.path.exists(".env"):
             if "=" in line:
                 key, value = line.strip().split("=", 1)
                 os.environ[key] = value
+
+# ============== Start Embedding Server in Background ==============
+def start_embedding_server():
+    """Start the embedding server in a background thread."""
+    try:
+        import uvicorn
+        from embedding_server import app as embedding_app
+        uvicorn.run(embedding_app, host="0.0.0.0", port=8100, log_level="warning")
+    except Exception as e:
+        print(f"Embedding server error: {e}")
+
+# Start server only once using session state
+if 'embedding_server_started' not in st.session_state:
+    st.session_state.embedding_server_started = False
+
+if not st.session_state.embedding_server_started:
+    try:
+        import requests
+        # Check if server is already running
+        requests.get("http://localhost:8100/health", timeout=1)
+        st.session_state.embedding_server_started = True
+    except:
+        # Start server in background thread
+        server_thread = threading.Thread(target=start_embedding_server, daemon=True)
+        server_thread.start()
+        st.session_state.embedding_server_started = True
+        time.sleep(3)  # Give server time to start
 
 # ============== Initialize Session State ==============
 if 'logs' not in st.session_state:
