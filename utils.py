@@ -7,6 +7,8 @@ import sys
 import shutil
 import requests
 import pandas as pd
+import yaml
+import subprocess
 
 # ============== Configuration ==============
 RAG_DIR = "rag_project"
@@ -41,7 +43,7 @@ def check_ollama_status(url="http://localhost:11434"):
     except requests.exceptions.RequestException:
         return False
 
-def update_settings(model_name="gpt-oss:20b-cloud"):
+def update_settings(model_name="gpt-oss:20b-cloud", api_base="http://localhost:11434/v1", api_key="ollama"):
     """Updates settings.yaml to use Ollama with optimized settings for local LLMs."""
     settings_path = os.path.join(RAG_DIR, "settings.yaml")
     
@@ -57,8 +59,8 @@ def update_settings(model_name="gpt-oss:20b-cloud"):
             chat = params['models']['default_chat_model']
             chat['model_provider'] = 'openai'  # Ollama uses OpenAI-compatible API
             chat['auth_type'] = 'api_key'
-            chat['api_key'] = 'ollama'  # Dummy key, not used
-            chat['api_base'] = 'http://localhost:11434/v1'
+            chat['api_key'] = api_key
+            chat['api_base'] = api_base
             chat['model'] = model_name
             chat['concurrent_requests'] = 1  # Sequential for local LLMs
             chat['max_retries'] = 10
@@ -69,8 +71,14 @@ def update_settings(model_name="gpt-oss:20b-cloud"):
             embed = params['models']['default_embedding_model']
             embed['model_provider'] = 'openai'
             embed['auth_type'] = 'api_key'
-            embed['api_key'] = 'ollama'
-            embed['api_base'] = 'http://localhost:11434/v1'
+            embed['api_key'] = api_key
+            embed['api_base'] = api_base
+            # If using a cloud provider generally we still use a local embedding or we can allow configuring it?
+            # For now let's assume the user wants to point both to the same place, OR we keep embeddings local?
+            # Requirement was "use API key created for ollama", likely pointing to a hosted Ollama.
+            # Hosted Ollama usually supports embeddings too.
+            # Use 'nomic-embed-text' if talking to Ollama, or whatever the user sets?
+            # Ideally we'd let them set this too, but for now let's stick to the plan: pass api_base/key to both.
             embed['model'] = 'nomic-embed-text'  # Best embedding model for Ollama
             embed['request_timeout'] = 600.0  # 10 minutes for embeddings
             

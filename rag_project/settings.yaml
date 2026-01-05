@@ -63,13 +63,13 @@ local_search:
   prompt: prompts/local_search_system_prompt.txt
 models:
   default_chat_model:
-    api_base: http://localhost:11434/v1
-    api_key: ollama
+    api_base: https://api.test.com/v1
+    api_key: sk-test-key
     async_mode: threaded
     auth_type: api_key
     concurrent_requests: 1
     max_retries: 10
-    model: gpt-oss:20b-cloud
+    model: test-model
     model_provider: openai
     model_supports_json: true
     request_timeout: 3600.0
@@ -78,8 +78,8 @@ models:
     tokens_per_minute: null
     type: chat
   default_embedding_model:
-    api_base: http://localhost:11434/v1
-    api_key: ollama
+    api_base: https://api.test.com/v1
+    api_key: sk-test-key
     async_mode: threaded
     auth_type: api_key
     concurrent_requests: 25

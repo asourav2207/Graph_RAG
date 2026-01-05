@@ -21,7 +21,8 @@ db.init_db()
 
 # Check Dependencies
 rag_found = utils.GRAPHRAG_CMD is not None
-ollama_ok = utils.check_ollama_status()
+# Note: Check status of *configured* URL, not just localhost default
+ollama_ok = utils.check_ollama_status() # default check
 
 # ============== Styling ==============
 st.markdown("""
@@ -46,7 +47,12 @@ st.markdown("""
 # ============== Sidebar ==============
 with st.sidebar:
     st.title("⚙️ Configuration")
-    model_name = st.text_input("Ollama Chat Model", value="gpt-oss:20b-cloud")
+    
+    # LLM Settings
+    with st.expander("🤖 LLM Settings", expanded=True):
+        model_name = st.text_input("Model Name", value="gpt-oss:20b-cloud", help="e.g., llama3, gpt-4o")
+        api_base = st.text_input("API Base URL", value="http://localhost:11434/v1", help="Ollama: http://localhost:11434/v1, OpenAI: https://api.openai.com/v1")
+        api_key = st.text_input("API Key", value="ollama", type="password", help="Use 'ollama' for local, or your actual key for providers")
     
     st.divider()
     
@@ -56,12 +62,12 @@ with st.sidebar:
             success, msg = utils.init_graphrag()
             if success:
                 st.success(msg)
-                s, m = utils.update_settings(model_name)
+                s, m = utils.update_settings(model_name, api_base, api_key)
                 st.success("Configured for Ollama!" if s else m)
             else:
                 if "already initialized" in msg.lower():
                     st.info("Project already initialized.")
-                    s, m = utils.update_settings(model_name)
+                    s, m = utils.update_settings(model_name, api_base, api_key)
                     st.success("Settings refreshed!" if s else m)
                 else:
                     st.error(msg)
@@ -78,7 +84,7 @@ with st.sidebar:
                 
     st.subheader("2️⃣ Configure")
     if st.button("Update Settings", use_container_width=True):
-        success, msg = utils.update_settings(model_name)
+        success, msg = utils.update_settings(model_name, api_base, api_key)
         st.success(msg) if success else st.error(msg)
     
     if st.button("🗑️ Clear Cache/Output", use_container_width=True):
