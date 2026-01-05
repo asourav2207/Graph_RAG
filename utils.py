@@ -43,7 +43,7 @@ def check_ollama_status(url="http://localhost:11434"):
     except requests.exceptions.RequestException:
         return False
 
-def update_settings(model_name="gpt-oss:120b-cloud", api_base="https://ollama.com/v1", api_key=None):
+def update_settings(model_name="gpt-oss:120b-cloud", api_base="https://ollama.com", api_key=None):
     """Updates settings.yaml to use Ollama with optimized settings for local LLMs."""
     
     # Priority: Argument > Environment Variable > Default

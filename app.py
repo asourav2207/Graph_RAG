@@ -59,7 +59,7 @@ with st.sidebar:
     # LLM Settings
     with st.expander("🤖 LLM Settings", expanded=True):
         model_name = st.text_input("Model Name", value="gpt-oss:120b-cloud", help="e.g., llama3, gpt-4o")
-        api_base = st.text_input("API Base URL", value="https://ollama.com/v1", help="Ollama Cloud: https://ollama.com/v1")
+        api_base = st.text_input("API Base URL", value="https://ollama.com", help="Ollama Cloud: https://ollama.com")
         
         # Check for Env/Secrets Key
         env_key = os.environ.get("OLLAMA_API_KEY")
