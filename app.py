@@ -153,7 +153,7 @@ with st.sidebar:
 
 # ============== Main Interface ==============
 st.title("🕸️ GraphRAG with Ollama")
-st.caption("Microsoft GraphRAG • Local LLMs • Persistent query storage")
+st.caption("Microsoft GraphRAG • Local LLMs • Persistent query storage - by Riyadi")
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["📂 Upload & Index", "📊 Graph Data", "💬 Query", "📜 History", "📋 Logs"])
 
