@@ -4,14 +4,19 @@ Tested and verified with llama3.2 and nomic-embed-text
 """
 import os
 import sys
-import subprocess
-import yaml
+import shutil
+import requests
 import pandas as pd
 
 # ============== Configuration ==============
 RAG_DIR = "rag_project"
 INPUT_DIR = os.path.join(RAG_DIR, "input")
-GRAPHRAG_CMD = os.path.join(os.path.dirname(sys.executable), "graphrag")
+
+# Dynamic command detection for Cloud/Linux compatibility
+GRAPHRAG_CMD = shutil.which("graphrag")
+if not GRAPHRAG_CMD:
+    # Fallback to local user bin if not in PATH
+    GRAPHRAG_CMD = os.path.join(os.path.dirname(sys.executable), "graphrag")
 
 # ============== Initialization ==============
 def init_graphrag():
@@ -19,11 +24,22 @@ def init_graphrag():
     if not os.path.exists(RAG_DIR):
         os.makedirs(RAG_DIR)
     
+    if not GRAPHRAG_CMD:
+        return False, "GraphRAG executable not found. Please install: pip install graphrag"
+
     try:
         subprocess.run([GRAPHRAG_CMD, "init", "--root", RAG_DIR], check=True)
         return True, "Initialized GraphRAG project."
     except Exception as e:
         return False, f"Failed to init: {e}"
+
+def check_ollama_status(url="http://localhost:11434"):
+    """Quickly checks if Ollama is reachable."""
+    try:
+        response = requests.get(url, timeout=1.0)
+        return response.status_code == 200
+    except requests.exceptions.RequestException:
+        return False
 
 def update_settings(model_name="gpt-oss:20b-cloud"):
     """Updates settings.yaml to use Ollama with optimized settings for local LLMs."""

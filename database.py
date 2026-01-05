@@ -122,4 +122,4 @@ def get_metadata(key: str, default=None):
         return row[0] if row else default
 
 # Initialize database on module import
-init_db()
+# init_db()  <-- MOVED: Called explicitly in app.py now

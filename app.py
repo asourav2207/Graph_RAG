@@ -16,6 +16,13 @@ if 'logs' not in st.session_state:
 if 'selected_report' not in st.session_state:
     st.session_state.selected_report = None
 
+# Initialize Database Explicitly
+db.init_db()
+
+# Check Dependencies
+rag_found = utils.GRAPHRAG_CMD is not None
+ollama_ok = utils.check_ollama_status()
+
 # ============== Styling ==============
 st.markdown("""
 <style>
@@ -58,6 +65,16 @@ with st.sidebar:
                     st.success("Settings refreshed!" if s else m)
                 else:
                     st.error(msg)
+    
+    # Validation Status
+    if not rag_found:
+        st.error("❌ GraphRAG not found! `pip install graphrag`")
+    
+    if not ollama_ok:
+        st.warning("⚠️ Ollama Local not reachable")
+        st.caption("If on Cloud, use OpenAI or a public URL.")
+    else:
+        st.success("✅ Ollama Local Online")
                 
     st.subheader("2️⃣ Configure")
     if st.button("Update Settings", use_container_width=True):
@@ -69,7 +86,11 @@ with st.sidebar:
         st.success(msg) if success else st.error(msg)
 
     st.divider()
-    st.info("💡 Make sure `ollama serve` is running!")
+    st.divider()
+    if ollama_ok:
+        st.info("💡 Connected to local Ollama")
+    else:
+        st.warning("💡 You need a working LLM endpoint")
     
     # Query History Summary in Sidebar
     st.divider()
