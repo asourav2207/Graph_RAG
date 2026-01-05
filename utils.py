@@ -72,13 +72,14 @@ def update_settings(model_name="gpt-oss:120b-cloud", api_base="https://ollama.co
             chat['request_timeout'] = 3600.0
             
         # ===== EMBEDDING MODEL CONFIG =====
-        # NOTE: Ollama Cloud doesn't support embeddings, use LOCAL Ollama
+        # Using LOCAL Ollama for embeddings (works reliably)
+        # For cloud: pre-index data locally, then deploy
         if 'models' in params and 'default_embedding_model' in params['models']:
             embed = params['models']['default_embedding_model']
             embed['model_provider'] = 'ollama'
             embed['auth_type'] = 'api_key'
-            embed['api_key'] = 'ollama'  # Local doesn't need real key
-            embed['api_base'] = 'http://localhost:11434'  # LOCAL Ollama
+            embed['api_key'] = 'ollama'
+            embed['api_base'] = 'http://localhost:11434'
             embed['model'] = 'nomic-embed-text'
             embed['request_timeout'] = 600.0
             
