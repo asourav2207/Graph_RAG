@@ -2945,3 +2945,2485 @@ Traceback (most recent call last):
   File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
     raise InternalServerError(
 litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 22:12:12.0670 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 22:12:16.0007 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=2, delay=4.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 22:12:22.0248 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=3, delay=8.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 22:12:31.0711 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=4, delay=16.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 22:12:49.0632 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=5, delay=32.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 22:13:09.0602 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIError: APIError: OpenAIException - Method Not Allowed
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 575, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: APIError: OpenAIException - Method Not Allowed
+2026-01-05 22:13:12.0389 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=2, delay=4.0, max_retries=10, exception=litellm.APIError: APIError: OpenAIException - Method Not Allowed
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 575, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: APIError: OpenAIException - Method Not Allowed
+2026-01-05 22:13:17.0685 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=3, delay=8.0, max_retries=10, exception=litellm.APIError: APIError: OpenAIException - Method Not Allowed
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 575, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: APIError: OpenAIException - Method Not Allowed
+2026-01-05 22:13:23.0326 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=6, delay=64.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 22:13:26.0606 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=4, delay=16.0, max_retries=10, exception=litellm.APIError: APIError: OpenAIException - Method Not Allowed
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 575, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: APIError: OpenAIException - Method Not Allowed
+2026-01-05 22:13:43.0085 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=5, delay=32.0, max_retries=10, exception=litellm.APIError: APIError: OpenAIException - Method Not Allowed
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 575, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: APIError: OpenAIException - Method Not Allowed
+2026-01-05 22:14:15.0565 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=6, delay=64.0, max_retries=10, exception=litellm.APIError: APIError: OpenAIException - Method Not Allowed
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 575, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: APIError: OpenAIException - Method Not Allowed
+2026-01-05 22:14:29.0298 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=7, delay=128.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 22:15:20.0525 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=7, delay=128.0, max_retries=10, exception=litellm.APIError: APIError: OpenAIException - Method Not Allowed
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 575, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: APIError: OpenAIException - Method Not Allowed
+2026-01-05 22:16:39.0604 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=8, delay=256.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 22:17:30.0509 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=8, delay=256.0, max_retries=10, exception=litellm.APIError: APIError: OpenAIException - Method Not Allowed
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 575, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: APIError: OpenAIException - Method Not Allowed
+2026-01-05 22:20:57.0487 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=9, delay=512.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 22:21:47.0040 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=9, delay=512.0, max_retries=10, exception=litellm.APIError: APIError: OpenAIException - Method Not Allowed
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Method Not Allowed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 575, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: APIError: OpenAIException - Method Not Allowed
+2026-01-05 22:27:36.0079 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:27:39.0046 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=2, delay=4.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:27:44.0404 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=3, delay=8.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:27:54.0233 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=4, delay=16.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:28:11.0544 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=5, delay=32.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:28:44.0212 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=6, delay=64.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:29:49.0854 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=7, delay=128.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:30:50.0873 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:30:53.0367 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=2, delay=4.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:30:58.0459 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=3, delay=8.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:31:07.0748 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=4, delay=16.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:31:25.0085 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=5, delay=32.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:31:58.0467 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=6, delay=64.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:33:03.0495 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=7, delay=128.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:35:12.0516 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=8, delay=256.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:39:29.0881 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=9, delay=512.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:41:06.0116 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:41:08.0770 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=2, delay=4.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:41:13.0894 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=3, delay=8.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:41:22.0448 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=4, delay=16.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:41:39.0186 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=5, delay=32.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:42:12.0200 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=6, delay=64.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 22:43:17.0363 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=7, delay=128.0, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401

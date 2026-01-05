@@ -62,24 +62,23 @@ def update_settings(model_name="gpt-oss:120b-cloud", api_base="https://ollama.co
         # ===== CHAT MODEL CONFIG =====
         if 'models' in params and 'default_chat_model' in params['models']:
             chat = params['models']['default_chat_model']
-            chat['model_provider'] = 'openai'  # Ollama uses OpenAI-compatible API
+            chat['model_provider'] = 'ollama'  # Native Ollama provider
             chat['auth_type'] = 'api_key'
             chat['api_key'] = api_key
             chat['api_base'] = api_base
             chat['model'] = model_name
-            chat['concurrent_requests'] = 1  # Sequential for local LLMs
+            chat['concurrent_requests'] = 1
             chat['max_retries'] = 10
-            chat['request_timeout'] = 3600.0  # 1 hour timeout for cloud LLMs
+            chat['request_timeout'] = 3600.0
             
         # ===== EMBEDDING MODEL CONFIG =====
+        # NOTE: Ollama Cloud doesn't support embeddings, use LOCAL Ollama
         if 'models' in params and 'default_embedding_model' in params['models']:
             embed = params['models']['default_embedding_model']
-            embed['model_provider'] = 'openai'
+            embed['model_provider'] = 'ollama'
             embed['auth_type'] = 'api_key'
-            # Important: Embeddings might need a different model/provider on Cloud?
-            # Assuming nomic-embed-text works on ollama.com too.
-            embed['api_key'] = api_key
-            embed['api_base'] = api_base
+            embed['api_key'] = 'ollama'  # Local doesn't need real key
+            embed['api_base'] = 'http://localhost:11434'  # LOCAL Ollama
             embed['model'] = 'nomic-embed-text'
             embed['request_timeout'] = 600.0
             
