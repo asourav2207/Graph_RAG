@@ -6137,3 +6137,254 @@ Traceback (most recent call last):
   File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 1636, in exception_type
     raise APIError(
 litellm.exceptions.APIError: litellm.APIError: HuggingfaceException - 405 method not allowed
+2026-01-05 23:09:40.0890 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=8, delay=256.0, max_retries=10, exception=litellm.APIError: HuggingfaceException - 405 method not allowed
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4632, in embedding
+    response = huggingface_embed.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/huggingface/embedding/handler.py", line 403, in embedding
+    response = client.post(embed_url, headers=headers, data=json.dumps(data))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '405 Method Not Allowed' for url 'http://localhost:11434'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 1636, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: HuggingfaceException - 405 method not allowed
+2026-01-05 23:10:02.0774 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=9, delay=512.0, max_retries=10, exception=litellm.BadRequestError: LLM Provider NOT provided. Pass in the LLM provider you are trying to call. You passed model=sentence_transformers/sentence-transformers/all-MiniLM-L6-v2
+ Pass model as E.g. For 'Huggingface' inference endpoints pass in `completion(model='huggingface/starcoder',..)` Learn more: https://docs.litellm.ai/docs/providers
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4361, in embedding
+    model, custom_llm_provider, dynamic_api_key, api_base = get_llm_provider(
+                                                            ^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/get_llm_provider_logic.py", line 455, in get_llm_provider
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/get_llm_provider_logic.py", line 432, in get_llm_provider
+    raise litellm.exceptions.BadRequestError(  # type: ignore
+litellm.exceptions.BadRequestError: litellm.BadRequestError: LLM Provider NOT provided. Pass in the LLM provider you are trying to call. You passed model=sentence_transformers/sentence-transformers/all-MiniLM-L6-v2
+ Pass model as E.g. For 'Huggingface' inference endpoints pass in `completion(model='huggingface/starcoder',..)` Learn more: https://docs.litellm.ai/docs/providers
+2026-01-05 23:13:57.0435 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=9, delay=512.0, max_retries=10, exception=litellm.APIError: HuggingfaceException - 405 method not allowed
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4632, in embedding
+    response = huggingface_embed.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/huggingface/embedding/handler.py", line 403, in embedding
+    response = client.post(embed_url, headers=headers, data=json.dumps(data))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '405 Method Not Allowed' for url 'http://localhost:11434'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 1636, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: HuggingfaceException - 405 method not allowed
+2026-01-05 23:15:23.0468 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Max retries exceeded, retries=10, max_retries=10, exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 23:15:23.0484 - ERROR - graphrag.language_model.providers.litellm.request_wrappers.with_logging - with_logging: Request failed with exception=litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4813, in embedding
+    response = ollama_embeddings_fn(  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/ollama/completion/handler.py", line 114, in ollama_embeddings
+    response = litellm.module_level_client.post(url=api_base, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/request_wrappers/with_logging.py", line 38, in _wrapped_with_logging
+    return sync_fn(**kwargs)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/request_wrappers/with_retries.py", line 47, in _wrapped_with_retries
+    return retry_service.retry(func=sync_fn, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2309, in exception_type
+    raise APIConnectionError(
+litellm.exceptions.APIConnectionError: litellm.APIConnectionError: OllamaException - Client error '401 Unauthorized' for url 'https://ollama.com/api/embed'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-01-05 23:18:35.0656 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=10, delay=1024.0, max_retries=10, exception=litellm.BadRequestError: LLM Provider NOT provided. Pass in the LLM provider you are trying to call. You passed model=sentence_transformers/sentence-transformers/all-MiniLM-L6-v2
+ Pass model as E.g. For 'Huggingface' inference endpoints pass in `completion(model='huggingface/starcoder',..)` Learn more: https://docs.litellm.ai/docs/providers
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4361, in embedding
+    model, custom_llm_provider, dynamic_api_key, api_base = get_llm_provider(
+                                                            ^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/get_llm_provider_logic.py", line 455, in get_llm_provider
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/get_llm_provider_logic.py", line 432, in get_llm_provider
+    raise litellm.exceptions.BadRequestError(  # type: ignore
+litellm.exceptions.BadRequestError: litellm.BadRequestError: LLM Provider NOT provided. Pass in the LLM provider you are trying to call. You passed model=sentence_transformers/sentence-transformers/all-MiniLM-L6-v2
+ Pass model as E.g. For 'Huggingface' inference endpoints pass in `completion(model='huggingface/starcoder',..)` Learn more: https://docs.litellm.ai/docs/providers
+2026-01-05 23:22:29.0879 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=10, delay=1024.0, max_retries=10, exception=litellm.APIError: HuggingfaceException - 405 method not allowed
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4632, in embedding
+    response = huggingface_embed.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/huggingface/embedding/handler.py", line 403, in embedding
+    response = client.post(embed_url, headers=headers, data=json.dumps(data))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 979, in post
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/custom_httpx/http_handler.py", line 961, in post
+    response.raise_for_status()
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '405 Method Not Allowed' for url 'http://localhost:11434'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 1636, in exception_type
+    raise APIError(
+litellm.exceptions.APIError: litellm.APIError: HuggingfaceException - 405 method not allowed

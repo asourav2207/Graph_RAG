@@ -78,14 +78,14 @@ models:
     tokens_per_minute: null
     type: chat
   default_embedding_model:
-    api_base: http://localhost:11434
-    api_key: ollama
+    api_base: http://localhost:8100/v1
+    api_key: none
     async_mode: threaded
     auth_type: api_key
     concurrent_requests: 25
     max_retries: 10
-    model: nomic-embed-text
-    model_provider: ollama
+    model: all-mpnet-base-v2
+    model_provider: openai
     request_timeout: 600.0
     requests_per_minute: null
     retry_strategy: exponential_backoff

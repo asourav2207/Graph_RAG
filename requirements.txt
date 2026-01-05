@@ -2,3 +2,5 @@ streamlit
 graphrag>=0.1.0
 pdfplumber
 sentence-transformers
+fastapi
+uvicorn
