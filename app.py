@@ -51,8 +51,9 @@ with st.sidebar:
     # LLM Settings
     with st.expander("🤖 LLM Settings", expanded=True):
         model_name = st.text_input("Model Name", value="gpt-oss:20b-cloud", help="e.g., llama3, gpt-4o")
-        api_base = st.text_input("API Base URL", value="http://localhost:11434/v1", help="Ollama: http://localhost:11434/v1, OpenAI: https://api.openai.com/v1")
-        api_key = st.text_input("API Key", value="ollama", type="password", help="Use 'ollama' for local, or your actual key for providers")
+        api_base = st.text_input("API Base URL", value="https://ollama.com/v1", help="Ollama Cloud: https://ollama.com/v1")
+        # Pre-filling user key for convenience
+        api_key = st.text_input("API Key", value="b97e19492b2c442d98addaaeb4daef90...", type="password", help="Ollama Public Key")
     
     st.divider()
     

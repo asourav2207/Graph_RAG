@@ -7,3 +7,2037 @@
 2026-01-04 03:16:04.0459 - WARNING - graphrag.query.structured_search.local_search.mixed_context - Reached token limit - reverting to previous context state
 2026-01-04 03:22:44.0376 - WARNING - graphrag.query.structured_search.local_search.mixed_context - Reached token limit - reverting to previous context state
 2026-01-04 03:24:13.0738 - WARNING - graphrag.query.structured_search.local_search.mixed_context - Reached token limit - reverting to previous context state
+2026-01-05 19:49:56.0669 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 19:50:00.0027 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=2, delay=4.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 19:50:06.0287 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=3, delay=8.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 19:50:16.0062 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=4, delay=16.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 19:50:33.0858 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=5, delay=32.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 19:51:08.0047 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=6, delay=64.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 19:52:13.0830 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=7, delay=128.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 19:54:23.0750 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=8, delay=256.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 19:58:41.0589 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=9, delay=512.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 20:29:27.0894 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=1, delay=2.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 20:29:31.0227 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=2, delay=4.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 20:29:37.0091 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=3, delay=8.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 20:29:46.0941 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=4, delay=16.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 20:30:04.0975 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=5, delay=32.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 20:30:38.0570 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=6, delay=64.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 20:31:44.0078 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=7, delay=128.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 20:33:54.0220 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=8, delay=256.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+2026-01-05 20:38:11.0635 - ERROR - graphrag.language_model.providers.litellm.services.retry.exponential_retry - ExponentialRetry: Request failed, retrying, retries=9, delay=512.0, max_retries=10, exception=litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1259, in embedding
+    headers, sync_embedding_response = self.make_sync_openai_embedding_request(
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1132, in make_sync_openai_embedding_request
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1124, in make_sync_openai_embedding_request
+    raw_response = openai_client.embeddings.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/openai/_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 4523, in embedding
+    response = openai_chat_completions.embedding(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/llms/openai/openai.py", line 1290, in embedding
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/services/retry/exponential_retry.py", line 47, in retry
+    return func(**kwargs)
+           ^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/graphrag/language_model/providers/litellm/embedding_model.py", line 87, in _base_embedding
+    return embedding(**new_args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/main.py", line 5215, in embedding
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/Users/adityasourav/Documents/Graph_RAG/.venv/lib/python3.11/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
